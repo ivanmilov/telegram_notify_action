@@ -1,0 +1,22 @@
+name: 'Simple Telegram message'
+author: 'Ivan Milov'
+description: 'Send text message to Telegram'
+
+inputs:
+  api_key:
+    description: 'Telegram API key'
+    required: true
+
+  chat_id:
+    description: 'Chat id to send message to'
+    required: true
+
+  message:
+    description: 'Text message to send'
+    default: 'Hey'
+
+runs:
+  using: "composite"
+  steps:
+    - run: curl -s -X POST --connect-timeout 10 https://api.telegram.org/bot${{inputs.api_key}}/sendMessage -d chat_id=${{inputs.chat_id}} -d parse_mode="Markdown" -d text="${{inputs.message}}"
+      shell: bash
