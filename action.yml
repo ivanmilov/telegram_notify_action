@@ -2,6 +2,10 @@ name: 'Simple Telegram message'
 author: 'Ivan Milov'
 description: 'Send text message to Telegram'
 
+branding:
+  icon: send
+  color: blue
+
 inputs:
   api_key:
     description: 'Telegram API key'
